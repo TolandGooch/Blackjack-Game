@@ -1,8 +1,8 @@
 package labs;
 
-public class BlackjackHand extends Hand{
+public class PlayerHand extends Hand{
 	 
-	     public int getBlackjackValue() {
+	     public int getBlackJackValue() {
 
 	         int valueOfHand;      
 	         boolean isAce;  
@@ -16,6 +16,8 @@ public class BlackjackHand extends Hand{
 	             Card card;  
 	             int cardValue;  
 	             card = getCard(i);
+	             // getValue() is not a method on BlackJackCard
+	             // Added on to BlackJackCard class that returns an int
 	             cardValue = card.getValue();  
 	             if (cardValue > 10) {
 	                 cardValue = 10;   
@@ -32,6 +34,3 @@ public class BlackjackHand extends Hand{
 	          return valueOfHand;
 	     } 
 	} 
-
-
-

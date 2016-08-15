@@ -58,17 +58,18 @@ public class RunBlackJack {
 
 	public boolean playBlackJack() {
 		Deck deck = new Deck();
-		BlackjackHand dealerHand = new BlackjackHand();
-		BlackjackHand playerHand = new BlackjackHand();
+		PlayerHand dealerHand = new PlayerHand();
+		PlayerHand playerHand = new PlayerHand();
 		char userAction;
 
-		deck.shuffle();
+		deck.shuffleDeck();
 		dealerHand.addCard(deck.dealCard());
 		dealerHand.addCard(deck.dealCard());
 		playerHand.addCard(deck.dealCard());
 		playerHand.addCard(deck.dealCard());
 
-		if (dealerHand.getBlackjackValue() == 21) {
+		
+		if (dealerHand.getBlackJackValue() == 21) {
 			System.out.println("Dealer has the " + dealerHand.getCard(0) + " and the " + dealerHand.getCard(1) + ".");
 			System.out.println("User has the " + playerHand.getCard(0) + " and the " + playerHand.getCard(1) + ".");
 			System.out.println();
@@ -76,7 +77,7 @@ public class RunBlackJack {
 			return false;
 		}
 
-		if (playerHand.getBlackjackValue() == 21) {
+		if (playerHand.getBlackJackValue() == 21) {
 			System.out.println("Dealer has the " + dealerHand.getCard(0) + " and the " + dealerHand.getCard(1) + ".");
 			System.out.println("User has the " + playerHand.getCard(0) + " and the " + playerHand.getCard(1) + ".");
 			System.out.println();
@@ -91,7 +92,7 @@ public class RunBlackJack {
 			for (int i = 0; i < playerHand.getCardCount(); i++) {
 				System.out.println("    " + playerHand.getCard(i));
 			}
-			System.out.println("Your total is " + playerHand.getBlackjackValue());
+			System.out.println("Your total is " + playerHand.getBlackJackValue());
 			System.out.println();
 			System.out.println("Dealer is showing the " + dealerHand.getCard(0));
 			System.out.println();
@@ -111,9 +112,9 @@ public class RunBlackJack {
 				System.out.println();
 				System.out.println("User hits.");
 				System.out.println("Your card is the " + newCard);
-				System.out.println("Your total is now " + playerHand.getBlackjackValue());
+				System.out.println("Your total is now " + playerHand.getBlackJackValue());
 
-				if (playerHand.getBlackjackValue() > 21) {
+				if (playerHand.getBlackJackValue() > 21) {
 					System.out.println();
 					System.out.println("You busted by going over 21.  You lose.");
 					System.out.println("Dealer's other card was the " + dealerHand.getCard(1));
@@ -127,31 +128,30 @@ public class RunBlackJack {
 		System.out.println("    " + dealerHand.getCard(0));
 		System.out.println("    " + dealerHand.getCard(1));
 
-		while (dealerHand.getBlackjackValue() <= 16) {
+		while (dealerHand.getBlackJackValue() <= 16) {
 			Card newCard = deck.dealCard();
 			System.out.println("Dealer hits and gets the " + newCard);
 			dealerHand.addCard(newCard);
-			if (dealerHand.getBlackjackValue() > 21) {
+			if (dealerHand.getBlackJackValue() > 21) {
 				System.out.println();
 				System.out.println("Dealer busted by going over 21.  You win.");
 				return true;
 			}
 		}
-		System.out.println("Dealer's total is " + dealerHand.getBlackjackValue());
+		System.out.println("Dealer's total is " + dealerHand.getBlackJackValue());
 
 		System.out.println();
-		if (dealerHand.getBlackjackValue() == playerHand.getBlackjackValue()) {
+		if (dealerHand.getBlackJackValue() == playerHand.getBlackJackValue()) {
 			System.out.println("Dealer wins on a tie.  You lose.");
 			return false;
-		} else if (dealerHand.getBlackjackValue() > playerHand.getBlackjackValue()) {
-			System.out.println("Dealer wins, " + dealerHand.getBlackjackValue() + " points to "
-					+ playerHand.getBlackjackValue() + ".");
+		} else if (dealerHand.getBlackJackValue() > playerHand.getBlackJackValue()) {
+			System.out.println("Dealer wins, " + dealerHand.getBlackJackValue() + " points to "
+					+ playerHand.getBlackJackValue() + ".");
 			return false;
 		} else {
-			System.out.println("You win, " + playerHand.getBlackjackValue() + " points to "
-					+ dealerHand.getBlackjackValue() + ".");
+			System.out.println("You win, " + playerHand.getBlackJackValue() + " points to "
+					+ dealerHand.getBlackJackValue() + ".");
 			return true;
 		}
 	}
 }
-
