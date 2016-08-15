@@ -1,20 +1,20 @@
 package labs;
 
-public class BlackJackDeck {
+public class BlackjackDeck {
 	private Card [] deck;
 	private int cardsUsed;
 	
-	public BlackJackDeck(){
-	Card []deck = new Card[52] ; 
+	public BlackjackDeck(){
+	deck = new Card[52] ; 
 	int countOfDeck = 0;
-       for ( int suit = 0; suit <4; suit++ ){
+       for ( int suit = 0; suit <= 3; suit++ ){
 			//for (Rank r : BlackJackRank.values()) {
             for (int rank = 1; rank <=13; rank++) {  
-    	   		deck[countOfDeck] = Card(rank, suit);
+    	   		deck[countOfDeck] = new Card(rank, suit);
     	   		countOfDeck++;
             }             
         }
-       cardsUsed =0;
+       cardsUsed = 0;
 	}
       
 	public void shuffleDeck() {
@@ -24,6 +24,18 @@ public class BlackJackDeck {
 			deck[i] = deck[randNum];
 			deck[randNum] = temp;
 		}
+		cardsUsed = 0;
 	}
+
+	public int cardsLeftInDeck() {
+      return 52 - cardsUsed;
+  }
+  
+  public Card dealCard() {
+      if (cardsUsed == 52)
+         shuffleDeck();
+      cardsUsed++;
+      return deck[cardsUsed - 1];
+  }
 
 }
