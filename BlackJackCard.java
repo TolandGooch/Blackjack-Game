@@ -1,16 +1,20 @@
 package labs;
 
-public class BlackJackCard { 
-	private int rank;
-	private int suit;
-	public static int CLUBS =1;
-	public static int DIAMONDS =2;
-	public static int HEARTS =3;
-	public static int SPADES =4;
+public class BlackjackCard { 
+	int rank;
+	int suit;
+	public final static int CLUBS =0;
+	public final static int DIAMONDS =1;
+	public final static int HEARTS =2;
+	public final static int SPADES =3;
+	public final static int ACE=1;
+	public final static int JACK =11;
+	public final static int QUEEN =12;
+	public final static int KING =13;
     
-    public BlackJackCard(int rank, int suit) {
-    	rank = rank;
-        suit = suit;
+    public BlackjackCard(int theRank, int theSuit) {
+    	rank = theRank;
+        suit = theSuit;
     }
 
     public int getSuit(){
@@ -23,14 +27,16 @@ public class BlackJackCard {
     
     public String getSuitToString(){
     	switch (suit){
-    	case CLUBS:
-    		return "Clubs";
-    	case DIAMONDS:		
-    		return "Diamonds";
-    	case HEARTS:		
-    		return "Hearts";
-    	case SPADES:		
-    		return "Spades";
+    		case CLUBS:
+    			return "Clubs";
+    		case DIAMONDS:		
+    			return "Diamonds";
+    		case HEARTS:		
+    			return "Hearts";
+    		case SPADES:		
+    			return "Spades";
+    		default:
+    			return "error";
     	}
     }
     		
@@ -59,59 +65,18 @@ public class BlackJackCard {
     	case 10:
     		return "10";
     	case 11:
-    		return "11";
+    		return "Jack";
     	case 12:
-    		return "12";
+    		return "Queen";
     	case 13:
-    		return "13";
+    		return "King";
+    	default: 
+    		return "error";
     }
    }
 
     public String toString() {
-        System.out.println(getRankToString + " of " + getSuitToString);
-        return
+        return getRankToString() + " of " + getSuitToString();
     }
-
-	public static int getCLUBS() {
-		return CLUBS;
-	}
-
-	public static void setCLUBS(int cLUBS) {
-		CLUBS = cLUBS;
-	}
-
-	public static int getDIAMONDS() {
-		return DIAMONDS;
-	}
-
-	public static void setDIAMONDS(int dIAMONDS) {
-		DIAMONDS = dIAMONDS;
-	}
-
-	public static int getHEARTS() {
-		return HEARTS;
-	}
-
-	public static void setHEARTS(int hEARTS) {
-		HEARTS = hEARTS;
-	}
-
-	public static int getSPADES() {
-		return SPADES;
-	}
-
-	public static void setSPADES(int sPADES) {
-		SPADES = sPADES;
-	}
-
-	public void setRank(int rank) {
-		this.rank = rank;
-	}
-
-	public void setSuit(int suit) {
-		this.suit = suit;
-	}
-
-            
 
 }
