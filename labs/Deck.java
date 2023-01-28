@@ -19,10 +19,10 @@ public class Deck {
       
 	public void shuffleDeck() {
 		// Out of bounds (will try to access the 52nd element in a length 52 array)
-//		for (int i = 1; i < 53; i ++) { 
+                // for (int i = 1; i < 53; i ++) { 
 		for (int i = 0; i < 52; i ++) {
 			// Will begin at a negative number
-//			int randNum = (int) (Math.random() * (i - 1));
+                        // int randNum = (int) (Math.random() * (i - 1));
 			int randNum = (int) (Math.random() * (i));
 			Card temp = deck[i];
 			deck[i] = deck[randNum];
